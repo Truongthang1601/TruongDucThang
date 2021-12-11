@@ -4,16 +4,14 @@
  */
 package B14_MiniProject.models;
 
-/**
- *
- * @author Thai
- */
+import java.util.Scanner;
+
 public class Student {
     private int id;
     private String name;
     private String klass;
     private String address;
-    private double phone;
+    private String phone;
 
     private double diemToan;
     private double diemVan;
@@ -26,13 +24,48 @@ public class Student {
 
     }
 
-    public Student(int id, String name, String klass, String address, double phone) {
+    public Student(int id, String name, String klass, String address, String phone) {
         this.id = id;
         this.name = name;
         this.klass = klass;
         this.address = address;
         this.phone = phone;
     }
+    public Student input(Scanner sc) {
+
+        System.out.println("Enter student id: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        System.out.println("Enter full name: ");
+        String name = sc.nextLine();
+
+        System.out.println("Enter class: ");
+        String klass = sc.nextLine();
+
+        System.out.println("Enter address: ");
+        String address = sc.nextLine();
+
+        System.out.println("Enter number phone: ");
+        String phone = sc.nextLine();
+
+        return new Student(id, name, klass, address, phone);
+    }
+     public  void edit(Scanner sc) {
+
+         System.out.println("Enter new name: ");
+         this.name = sc.nextLine();
+
+         System.out.println("Enter new class: ");
+         this.klass = sc.nextLine();
+
+         System.out.println("Enter new address: ");
+         this.address = sc.nextLine();
+
+         System.out.println("Enter new numer phone: ");
+         this.phone = sc.nextLine();
+
+     }
 
      public int getId() {
         return id;
@@ -66,11 +99,11 @@ public class Student {
         this.address = address;
     }
 
-    public double getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(double phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

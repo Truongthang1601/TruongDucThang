@@ -10,29 +10,43 @@ import java.util.List;
 
 public class StudentDataService {
     public List<Student> read(String path) throws IOException{
-        
+
         List<Student> students;
         students = new ArrayList<>();
-        
+
         /*Path pathFileToRead = Paths.get("./resources/Student-input.txt");*/
         Path pathFileToRead = Paths.get(path);
-        
+
         List<String> allLines = Files.readAllLines(pathFileToRead);
-           
+
         for(int i = 0; i < allLines.size(); ++i) {
-            
+
             String line = allLines.get(i);
             String[] data;
             data = line.split(",");
-            
-            Student student = new Student(Integer.parseInt(data[0]), data[1].trim(), data[2].trim(), data[3].trim(), Integer.parseInt(data[4]));
+
+            Student student = new Student(Integer.parseInt(data[0]), data[1].trim(), data[2].trim(), data[3].trim(), data[4]);
             /*--trim: loại bỏ các khoảng trắng thừa*/
             students.add(student);
-            
+
         }
         return students;
-        
-    } 
+    }
+
+    public void write(String path, List<Student> students) throws IOException {
+        List<String> list = new ArrayList<>();
+
+        for (int i = 0; i < students.size(); ++i ) {
+            Student get = students.get(i);
+            list.add(students.toString());
+        }
+        //print to file
+        Path pathFileToWrite = Paths.get(path);
+
+        Files.write(pathFileToWrite, list);
+
+
+    }
 }
 /* -- path: đọc đường dẫn
    -- path sau get thì là nơi để truyền dữ liệu các file khác vào
